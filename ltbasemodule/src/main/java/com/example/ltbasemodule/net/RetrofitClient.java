@@ -55,28 +55,22 @@ public class RetrofitClient {
      * @return 返回一个拦截器
      */
     private Interceptor getHeaderInterceptor(Map<String,String> headerMap) {
-        Interceptor interceptor = new Interceptor() {
-            @Override
-            public Response intercept(@NonNull Chain chain) throws IOException {
-                Request original = chain.request();
-                Request.Builder requestBuilder = original.newBuilder();
-                //添加Token
-                //requestBuilder.header("TOKEN", NetConstant.TOKEN);
-                if (headerMap == null||headerMap.isEmpty()){
-                    Request request = requestBuilder.build();
-                    return chain.proceed(request);
-                }
-                Set<Map.Entry<String, String>> entrySet = headerMap.entrySet();
-                Iterator<Map.Entry<String, String>> iterator = entrySet.iterator();
-                while (iterator.hasNext()){
-                    Map.Entry<String, String> next = iterator.next();
-                    requestBuilder.addHeader(next.getKey(), next.getValue());
-                }
+        return chain -> {
+            Request original = chain.request();
+            Request.Builder requestBuilder = original.newBuilder();
+            //添加Token
+            //requestBuilder.header("TOKEN", NetConstant.TOKEN);
+            if (headerMap == null||headerMap.isEmpty()){
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
             }
+            Set<Map.Entry<String, String>> entrySet = headerMap.entrySet();
+            for (Map.Entry<String, String> next : entrySet) {
+                requestBuilder.addHeader(next.getKey(), next.getValue());
+            }
+            Request request = requestBuilder.build();
+            return chain.proceed(request);
         };
-        return interceptor;
 
     }
 
@@ -95,7 +89,7 @@ public class RetrofitClient {
     }
 
     /**
-     * 创建请求
+     * 创建请求，用泛型的好处是，可以写多个接口类，分别处理不同的事情
      * @param clz       请求路径接口
      * @param headerMap 请求头
      * @param <T>       请求路径接口类型

@@ -34,7 +34,10 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder unbinder;
     protected CompositeDisposable mCompositeDisposable;
-
+    /**
+     * 这个默认是-1，如果他的子类设置了这个值，那么就按照这个值的时间设置抖动时间
+     * 下面判断抖动时间默认是1000毫秒
+     */
     private long shakeTimeMilliseconds = -1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 添加订阅
+     * 处理点击抖动
      */
     public void addDisposable(View view) {
         if (mCompositeDisposable == null) {
@@ -63,6 +67,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         mCompositeDisposable.add(subscribe);
     }
 
+    /**
+     * 点击抖动处理后的返回
+     * @param view 点击的是哪个View
+     */
     protected abstract void clickCallBack(View view);
 
     /**
@@ -78,9 +86,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initView();
 
     protected abstract int getLayoutId();
+
+    /**
+     * 设置点击抖动时间，毫秒级别
+     * @param shakeTimeMilliseconds 默认是-1
+     */
     protected void setShakeTimeMilliseconds(int shakeTimeMilliseconds) {
         this.shakeTimeMilliseconds = shakeTimeMilliseconds;
     }
+
+    /**
+     * 页面销毁执行的方法
+     */
     @Override
     protected void onDestroy() {
         unbinder.unbind();

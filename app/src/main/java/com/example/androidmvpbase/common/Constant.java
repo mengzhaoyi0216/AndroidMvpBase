@@ -1,5 +1,8 @@
 package com.example.androidmvpbase.common;
 
+/**
+ * 常量类
+ */
 public class Constant {
-    public static final int SHAKE_TIME=1;
+
 }
