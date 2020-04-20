@@ -1,0 +1,13 @@
+1.屏幕适配--------------me.jessyan:autosize:1.2.1---尽量用权重
+2.国际化
+3.三级缓存
+4.内存泄漏--------------com.uber.autodispose---AutoDispose
+5.安装打开和图标打开的bug --------------------------------解决了
+6.切换主题
+7.Greendao数据库更新数据丢失，增加int类型字段报错问题-----解决了
+8.软件保活
+9.调用相机，调用相册，调用短信
+10.网络相关的上传和下载
+11.运行时权限------com.github.tbruyelle:rxpermissions:0.10.2
+12.点击抖动问题----com.jakewharton.rxbinding3.view----Rxbinding的RxView
+13.检查内存泄漏----debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
