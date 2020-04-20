@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".main.activity.MainActivity">
 
     <Button
@@ -13,14 +14,12 @@
         android:text="testRecycleActivity"/>
     <Button
         android:id="@+id/btn_test_click"
-        android:layout_below="@id/btn_start_testRecycleActivity"
         android:onClick="testClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试疯狂点击"/>
     <Button
         android:id="@+id/btn_login"
-        android:layout_below="@id/btn_test_click"
         android:onClick="testClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +29,6 @@
         android:id="@+id/tv_helloWorld"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:text="Hello World!" />
 
-</RelativeLayout>
+</LinearLayout>

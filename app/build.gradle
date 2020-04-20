@@ -19,7 +19,7 @@ android {
     }
     greendao {
         schemaVersion 1 //数据库版本
-        daoPackage 'com.example.mybasemoudle.db.greendao'
+        daoPackage 'com.example.androidmvpbase.db.greendao'
         // 指定生成代码的目录，设置 DaoMaster、DaoSession、Dao 包名
         targetGenDir 'src/main/java'  //  生成代码到具体包下，设置 DaoMaster、DaoSession、Dao 目录
     }
