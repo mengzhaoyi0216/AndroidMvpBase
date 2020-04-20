@@ -18,6 +18,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试疯狂点击"/>
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_below="@id/btn_test_click"
+        android:onClick="testClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"/>
 
     <TextView
         android:id="@+id/tv_helloWorld"

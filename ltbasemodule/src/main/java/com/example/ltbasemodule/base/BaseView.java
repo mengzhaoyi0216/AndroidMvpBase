@@ -13,7 +13,7 @@ public interface BaseView {
     /**
      * 显示加载中
      */
-    void showLoading(String loadingMessage);
+    void showLoading();
     /**
      * 隐藏加载
      */
