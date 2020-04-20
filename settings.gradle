@@ -1,2 +1,2 @@
 include ':app', ':ltbasemodule'
-rootProject.name='MyBaseMoudle'
+rootProject.name='AndroidMvpBase'
