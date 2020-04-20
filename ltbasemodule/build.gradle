@@ -1,0 +1,71 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //注解查找控件
+    api 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    //okhttp3
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api "com.squareup.okhttp3:logging-interceptor:3.10.0"
+    //retrofit2
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //rxjava2
+    api "io.reactivex.rxjava2:rxjava:2.2.8"
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //AutoDispose解决RxJava内存泄漏
+    api 'com.uber.autodispose:autodispose:1.4.0'
+    api 'com.uber.autodispose:autodispose-android:1.4.0'
+    api 'com.uber.autodispose:autodispose-android-archcomponents:1.4.0'
+    //Material-dialogs
+//    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    api 'com.afollestad.material-dialogs:core:0.9.6.0'
+    // glide
+    api 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //运行时权限
+    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    //base-RecycleViewAdapter
+    api 'com.zhy:base-rvadapter:3.0.3'
+    //操作数据库greendao
+    api 'org.greenrobot:greendao:3.2.2'
+    //屏幕适配
+    api 'me.jessyan:autosize:1.2.1'
+    //解决点击抖动RxBinding
+    api 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
+}
