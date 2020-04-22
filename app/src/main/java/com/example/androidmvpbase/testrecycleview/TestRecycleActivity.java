@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ltbasemodule.utils.LogUtil;
 import com.example.ltbasemodule.utils.ToastUtil;
 import com.example.androidmvpbase.R;
-import com.example.androidmvpbase.common.Constant;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
@@ -46,7 +45,7 @@ public class TestRecycleActivity extends AppCompatActivity {
 
     private void initClick() {
         RxView.clicks(btnAddData)
-                .throttleFirst(Constant.SHAKE_TIME, TimeUnit.SECONDS)
+                .throttleFirst(1, TimeUnit.SECONDS)
                 .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this)))
                 .subscribe(o-> addData());
     }
