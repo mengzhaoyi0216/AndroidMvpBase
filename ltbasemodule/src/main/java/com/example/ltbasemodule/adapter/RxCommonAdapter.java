@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ltbasemodule.base.BaseActivity;
 import com.example.ltbasemodule.common.Constant;
 import com.jakewharton.rxbinding3.view.RxView;
 import com.uber.autodispose.AutoDispose;
@@ -27,7 +28,7 @@ public abstract class RxCommonAdapter<T> extends CommonAdapter<T> {
     protected void setListener(final ViewGroup parent, final ViewHolder viewHolder, int viewType) {
         if (!isEnabled(viewType)) return;
         RxView.clicks(viewHolder.getConvertView())
-                .throttleFirst(Constant.SHAKE_TIME, TimeUnit.SECONDS)
+                .throttleFirst(Constant.SHAKE_TIME, TimeUnit.MILLISECONDS)
                 .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(mActivity)))
                 .subscribe(unit -> {
                     if (mOnItemClickListener != null) {
@@ -36,7 +37,7 @@ public abstract class RxCommonAdapter<T> extends CommonAdapter<T> {
                     }
                 });
         RxView.longClicks(viewHolder.getConvertView())
-                .throttleFirst(Constant.SHAKE_TIME, TimeUnit.SECONDS)
+                .throttleFirst(Constant.SHAKE_TIME, TimeUnit.MILLISECONDS)
                 .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(mActivity)))
                 .subscribe(unit -> {
                     if (mOnItemClickListener != null) {
