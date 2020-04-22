@@ -28,25 +28,41 @@ public class MainActivity extends BaseMvpActivity<MainPresetner> implements Main
     @BindView(R.id.btn_login)
     Button btnLogin;
 
+    /**
+     * 初始化页面等操作
+     */
     @Override
     protected void initView() {
+        //创建业务层
         mPresenter = new MainPresetner();
+        //绑定业务层
         mPresenter.attachView(this);
         tvHelloWorld.setText(R.string.application_name);
         addClickEvent();
     }
 
+    /**
+     * 绑定布局文件
+     * @return  返回布局文件
+     */
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
 
+    /**
+     * 添加处理了点击抖动的点击监听事件
+     */
     private void addClickEvent() {
         addDisposable(tvHelloWorld);
         addDisposable(btnStartTestRecycleActivity);
         addDisposable(btnLogin);
     }
 
+    /**
+     * 处理点击抖动的点击监听返回事件
+     * @param view  点击的View
+     */
     @Override
     protected void clickCallBack(View view) {
         int id = view.getId();
